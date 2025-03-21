@@ -1,64 +1,64 @@
-// Variable qui contient la localisation des pages
+// Variable that contains the location of the pages
 var PageLoc = "./Pages"
 
-// Variables pour A-FRAME qui concerne la scène
-var SceneData = $("a-scene")
-var scene     = SceneData[0]
-var MainScene = $("#MainScene")[0]
+// Variables for A-FRAME related to the scene
+var SceneData = $("a-scene")  // Selects the A-Frame scene element
+var scene     = SceneData[0]  // Gets the first A-Frame scene element
+var MainScene = $("#MainScene")[0]  // Gets the main scene element with the ID "MainScene"
 
-// Contiens le nom du document dans une variable
-let PathName = location.pathname.split("/")
-PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()
+// Contains the name of the document in a variable
+let PathName = location.pathname.split("/")  // Splits the URL path into an array
+PathName = (PathName[PathName.length - 1].split(".")[0] || "index").toUpperCase()  // Gets the last part of the path, removes the file extension, and converts it to uppercase. Defaults to "INDEX" if no file name is found.
 
-//Fonction pour attendre x millisecondes
+// Function to wait for x milliseconds
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-// Fonction qui enlève le "cache" de la caméra
+// Function that removes the "cache" from the camera
 async function UpdateNavigator() {
-    await sleep(100)
-    $("#cur_camera")[0].emit("end_trans")
-  }
+    await sleep(100)  // Waits for 100 milliseconds
+    $("#cur_camera")[0].emit("end_trans")  // Emits the "end_trans" event to the current camera element
+}
 
-//Interaction pour la fonction UpdateNavigator, quand la template est charger
-if(MainScene) MainScene.addEventListener("templaterendered", UpdateNavigator)
+// Interaction for the UpdateNavigator function, when the template is loaded
+if(MainScene) MainScene.addEventListener("templaterendered", UpdateNavigator)  // Adds an event listener to call UpdateNavigator when the template is rendered
 
-// Fonction qui change la scène en vue du nom donner
+// Function that changes the scene based on the given name
 async function SwitchArea(Name) {
-    let ok = document.querySelectorAll(".field")
+    let ok = document.querySelectorAll(".field")  // Selects all elements with the class "field"
 
-    // Enlève tous les éléments de la classe "field" 
+    // Removes all elements with the class "field"
     ok.forEach(function(val) { $(val).remove() })
 
-    $("#cur_camera")[0].emit("start_trans")
-    await sleep(500)
+    $("#cur_camera")[0].emit("start_trans")  // Emits the "start_trans" event to the current camera element
+    await sleep(500)  // Waits for 500 milliseconds
   
-    // Changement de la scène par la valeur du template
+    // Changes the scene to the value of the template
     MainScene.attributes.template.nodeValue = "src: " + PageLoc + "/" + PathName + "/" + Name + ".html"
 }
 
-// Initialisation de la scène
+// Initialization of the scene
 AFRAME.registerComponent('scene-init', {
-    schema: {type: 'string', default: 'default'},
+    schema: {type: 'string', default: 'default'},  // Defines a schema with a string type and a default value
     init: async function() {
-      this.SceneName = this.data
+      this.SceneName = this.data  // Gets the name of the scene from the schema
 
-      SwitchArea(this.SceneName)
+      SwitchArea(this.SceneName)  // Calls the SwitchArea function with the scene name
     }
   })  
 
-// Boutton qui change la scène a la valeur prédéfinie
+// Button that changes the scene to the predefined value
 AFRAME.registerComponent('scene-changer', {
-    schema: {type: 'string', default: 'default'},
+    schema: {type: 'string', default: 'default'},  // Defines a schema with a string type and a default value
   
     init: async function() {
-      this.onClick = this.onClick.bind(this)
-      this.SceneName = this.data
+      this.onClick = this.onClick.bind(this)  // Binds the onClick function to the current context
+      this.SceneName = this.data  // Gets the name of the scene from the schema
 
-      //  Active l'évènement si un click est détecté
-      this.el.addEventListener("click", this.onClick)
+      //  Activates the event when a click is detected
+      this.el.addEventListener("click", this.onClick)  // Adds an event listener to call onClick when the element is clicked
     },
   
     onClick: async function() {
-      SwitchArea(this.SceneName)
+      SwitchArea(this.SceneName)  // Calls the SwitchArea function with the scene name
     }
   })
