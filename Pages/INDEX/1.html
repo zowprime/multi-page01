@@ -1,6 +1,20 @@
-<a-scene>
-  <!-- Imagem 360° como plano de fundo -->
-  <a-sky src="./resources/Melec1.jpg" rotation="0 -90 0"></a-sky>
+ <a-scene>
+  <!-- Método recomendado: Usando <a-videosphere> -->
+  <a-videosphere 
+    src="#melecVideo" 
+    rotation="0 -90 0"  <!-- Ajuste a rotação se necessário -->
+  ></a-videosphere>
+
+  <!-- Define o vídeo (substitua pelo caminho correto) -->
+  <video
+    id="melecVideo"
+    autoplay
+    loop
+    muted
+    crossorigin="anonymous"
+    playsinline
+    src="./resources/VID.Melec.mp4"  <!-- Caminho do seu vídeo -->
+  ></video>
 </a-scene>
 
 <a-entity 
