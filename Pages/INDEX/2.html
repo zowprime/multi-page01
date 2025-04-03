@@ -2,3 +2,20 @@
   <!-- Imagem 360° como plano de fundo -->
   <a-sky src="./resources/Melec1.jpg" rotation="0 -90 0"></a-sky>
 </a-scene>
+
+<a-entity 
+  id="changer"
+  scene-changer="3"
+  geometry="primitive: plane; height: 0.5; width: 1.5"    
+  material="color: #333"
+  position="0 1.6 -3"
+  class="raycastable">
+
+  <a-text
+    value="enter"
+    align="center"
+    position="0 0 0.02"
+    color="#FFF">
+  </a-text>
+  
+</a-entity>
