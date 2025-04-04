@@ -1,4 +1,15 @@
+
 <a-sky id="PROMENADE" autoplay="" loop="false" src="./resources/VID_Melec.mp4" rotation="0 0 0" muted></a-sky>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videoElement = document.querySelector('#PROMENADE');
+    videoElement.addEventListener('ended', function() {
+      window.location.href = '2.html';
+    });
+  });
+</script>
+
 
 <a-entity 
   id="changer"
