@@ -1,30 +1,28 @@
+<a-sky id="PROMENADE" autoplay="" loop="false" src="./resources/VID_Melec.mp4" rotation="0 0 0" muted></a-sky>
 
- <a-sky id="PROMENADE" 
-         autoplay 
-         loop="false" 
-         src="./resources/VID_Melec.mp4" 
-         rotation="0 0 0" 
-         muted>
-  </a-sky>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videoElement = document.querySelector('#PROMENADE');
+    videoElement.addEventListener('ended', function() {
+      window.location.href = '2.html';
+    });
+  });
+</script>
 
-  <!-- Botão (inicialmente invisível) -->
-  <a-entity 
-    id="changer"
-    visible="false"
-    scene-changer="2"
-    geometry="primitive: plane; height: 0.5; width: 1.5"    
-    material="color: #333; opacity: 0.8"
-    position="0 1.6 -3"
-    class="raycastable"
-    animation__fadein="property: material.opacity; from: 0; to: 0.8; dur: 1500; startEvents: showButton"
-    animation__scale="property: scale; from: 0.8 0.8 0.8; to: 1 1 1; dur: 1000; startEvents: showButton">
 
-    <a-text
-      value="ENTER"
-      align="center"
-      position="0 0 0.02"
-      color="#FFF"
-      opacity="0"
-      animation="property: components.material.material.opacity; from: 0; to: 1; dur: 1000; startEvents: showButton">
-    </a-text>
-  </a-entity>
+<a-entity 
+  id="changer"
+  scene-changer="2"
+  geometry="primitive: plane; height: 0.5; width: 1.5"    
+  material="color: #333"
+  position="0 1.6 -3"
+  class="raycastable">
+
+  <a-text
+    value="enter"
+    align="center"
+    position="0 0 0.02"
+    color="#FFF">
+  </a-text>
+  
+</a-entity>
