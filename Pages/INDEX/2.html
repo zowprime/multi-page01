@@ -27,3 +27,25 @@
   <a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
 
 </a-entity>
+
+    <script>
+        document.getElementById('switch1').addEventListener('click', toggleLights);
+        document.getElementById('switch2').addEventListener('click', toggleLights);
+
+        function toggleLights() {
+            var light1 = document.getElementById('light1');
+            var light2 = document.getElementById('light2');
+
+            if (light1.classList.contains('hidden')) {
+                light1.classList.remove('hidden');
+            } else {
+                light1.classList.add('hidden');
+            }
+
+            if (light2.classList.contains('hidden')) {
+                light2.classList.remove('hidden');
+            } else {
+                light2.classList.add('hidden');
+            }
+        }
+    </script>
