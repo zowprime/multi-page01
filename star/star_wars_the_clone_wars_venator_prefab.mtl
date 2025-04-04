@@ -1,0 +1,17 @@
+# Exported from 3D Builder
+
+newmtl VenatorV3_SmallDoor_WallLight_0
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_0_17832851910588591680.png
+
+newmtl VenatorV3_LargeDoor_0
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_7_12136749704190523488.png
+
+newmtl VenatorV3_WallPanels_0
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_4_6672996682974157280.png
+
+newmtl Venator_Floor_0
+Kd 1.000000 1.000000 1.000000
+map_Kd texture_10_15853527909305393568.png
