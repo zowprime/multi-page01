@@ -62,3 +62,20 @@ AFRAME.registerComponent('scene-changer', {
       SwitchArea(this.SceneName)  // Calls the SwitchArea function with the scene name
     }
   })
+
+ document.addEventListener('DOMContentLoaded', function() {
+      const videoElement = document.querySelector('#PROMENADE');
+      const changerButton = document.querySelector('#changer');
+      
+      // Quando o vídeo terminar
+      videoElement.addEventListener('ended', function() {
+        // Mostra o botão com animação
+        changerButton.setAttribute('visible', 'true');
+        changerButton.emit('showButton');
+        
+        // Altera comportamento: ao clicar vai para 2.html
+        changerButton.addEventListener('click', function() {
+          window.location.href = '2.html';
+        });
+      });
+    });
