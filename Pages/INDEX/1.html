@@ -1,17 +1,10 @@
-<a-scene>
-  <!-- 1. Vídeo 360° (único elemento necessário) -->
-  <a-sky id="PROMENADE" 
-         autoplay 
-         loop="false" 
-         src="./resources/VID_Melec.mp4" 
-         rotation="0 0 0" 
-         muted>
-  </a-sky>
+<a-sky id="PROMENADE" autoplay="" loop="false" src="./resources/VID_Melec.mp4" rotation="0 0 0" muted></a-sky>
 
-  <!-- 2. Script que faz a mágica (redireciona ao final) -->
-  <script>
-    document.querySelector('#PROMENADE').addEventListener('ended', function() {
-      window.location.href = '2.html'; // Muda de página automaticamente
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videoElement = document.querySelector('#PROMENADE');
+    videoElement.addEventListener('ended', function() {
+      window.location.href = '2.html';
     });
-  </script>
-</a-scene>
+  });
+</script>
