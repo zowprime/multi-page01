@@ -1,4 +1,13 @@
-< a-scene > < a-assets > < id do vídeo = "antarctica" reprodução automática loop = "true" src = "antarctica.mp4" > </ video > </ a-assets >
+<a-sky id="PROMENADE1" autoplay="" loop="false" src="./resources/VID_Melec2.mp4" rotation="0 0 0" muted></a-sky>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var videoElement = document.querySelector('#PROMENADE1');
+    videoElement.addEventListener('ended', function() {
+      window.location.href = '2.html';
+    });
+  });
+</script>
   
 <a-entity 
   id="changer"
