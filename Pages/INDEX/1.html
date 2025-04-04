@@ -9,3 +9,20 @@
   });
 </script>
 
+<a-scene>
+  <!-- Vídeo 360° (desativa loop) -->
+  <a-sky id="PROMENADE" 
+         autoplay 
+         loop="false" 
+         src="./resources/VID_Melec.mp4" 
+         rotation="0 0 0" 
+         muted>
+  </a-sky>
+
+  <script>
+    // Redireciona automaticamente ao término do vídeo
+    document.querySelector('#PROMENADE').addEventListener('ended', function() {
+      window.location.href = '2.html'; // Ou use cena diretamente: AFRAME.scenes[0].emit('change-scene', {id: '2'});
+    });
+  </script>
+</a-scene>
